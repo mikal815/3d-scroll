@@ -52,14 +52,14 @@ Array(200).fill().forEach(addStar)
 const spaceTexture = new THREE.TextureLoader().load('space.jpg')
 scene.background = spaceTexture
 
-// const stairsTexture = new THREE.TextureLoader().load('stairs.jpg')
+const stairsTexture = new THREE.TextureLoader().load('stairs.jpg')
 
-// const stairs = new THREE.Mesh(
-//   new THREE.BoxGeometry(3, 3, 3),
-//   new THREE.MeshBasicMaterial({ map: stairsTexture })
-// )
+const stairs = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial({ map: stairsTexture })
+)
 
-// scene.add(stairs)
+scene.add(stairs)
 
 const moonTexture = new THREE.TextureLoader().load('moon.jpg')
 const normalTexture = new THREE.TextureLoader().load('normal.jpg')
@@ -74,6 +74,29 @@ const moon = new THREE.Mesh(
 
 scene.add(moon)
 
+moon.position.z = 30;
+moon.position.setX(-10);
+
+
+function moveCamera() {
+
+  const t = document.body.getBoundingClientRect().top;
+
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z += 0.05;
+
+  stairs.rotation.y += 0.01;
+  stairs.rotation.z += 0.01;
+
+  camera.position.z = t * -0.01;
+  camera.position.x = t * -0.0002;
+  camera.rotation.y = t * -0.0002;
+
+}
+
+document.body.onscroll = moveCamera
+moveCamera();
 
 function animate() {
   requestAnimationFrame(animate)
