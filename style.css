@@ -1,5 +1,9 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
+body {
+  overflow-x: hidden;
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -19,10 +23,10 @@ canvas {
 
 main {
   width: 100vw;
+  width: 100%;
   color: white;
   z-index: 99;
   position: absolute;
-  width: 100%;
   margin: 0px auto;
   padding: 120px 0px;
   
@@ -47,9 +51,13 @@ canvas {
   header {
     background: var(--dark-bg);
     grid-column: 2 / span 5;
-    font-size: 2.5rem;
+    font-size: 2rem;
     padding: 2rem;
     margin-bottom: var(--spacing);
+  }
+
+  .name {
+    font-size: 1.5rem;
   }
 
   section {
@@ -71,11 +79,31 @@ canvas {
   blockquote p {
     color: black;
     background-color: white;
-    font-size: 4rem;
+    font-size: 3rem;
     display: inline;
     line-height: 1;
   }
 
   .left {
     grid-column: 6 / 12;
+  }
+
+
+  ::-webkit-scrollbar {
+    width: 15px;
+  } 
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: black; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: grey; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
   }

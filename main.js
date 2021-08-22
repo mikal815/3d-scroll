@@ -1,12 +1,9 @@
 import './style.css'
-
 import * as THREE from 'three';
-
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.9, 1000);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
@@ -15,16 +12,16 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-camera.position.setZ(30);
-camera.position.setX(-3);
+// camera.position.setZ(30);
+// camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
-const geometry = new THREE.TorusGeometry(20, 2, 20, 70)
-const material = new THREE.MeshStandardMaterial({ color: 0x00c100 })
-const torus = new THREE.Mesh(geometry, material)
+// const geometry = new THREE.TorusGeometry(20, 2, 20, 70)
+// const material = new THREE.MeshStandardMaterial({ color: 0x00c100 })
+// const torus = new THREE.Mesh(geometry, material)
 
-scene.add(torus);
+// scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff)
 pointLight.position.set(5, 5, 5)
@@ -36,8 +33,13 @@ scene.add(pointLight, ambientLight)
 // const controls = new OrbitControls(camera, renderer.domElement)
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24)
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff })
+  const starTexture = new THREE.TextureLoader().load('stone.jpg')
+
+
+  // const geometry = new THREE.SphereGeometry(0.25, 24, 24)
+  const geometry = new THREE.BoxGeometry(6, 6, 11)
+  const material = new THREE.MeshBasicMaterial({ map: starTexture })
+  // const material = new THREE.MeshBasicMaterial({ map: stairsTexture })
   const star = new THREE.Mesh(geometry, material)
 
   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100))
@@ -47,13 +49,13 @@ function addStar() {
 
 Array(150).fill().forEach(addStar)
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg')
+const spaceTexture = new THREE.TextureLoader().load('hall.jpg')
 scene.background = spaceTexture;
 
-const stairsTexture = new THREE.TextureLoader().load('blue-texture.jpg')
+const stairsTexture = new THREE.TextureLoader().load('stone.jpg')
 
 const stairs = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.BoxGeometry(6, 6, 11),
   new THREE.MeshBasicMaterial({ map: stairsTexture })
 )
 
@@ -63,30 +65,30 @@ stairs.position.z = 4;
 stairs.position.setX(10);
 
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg')
-const normalTexture = new THREE.TextureLoader().load('normal.jpg')
+// const moonTexture = new THREE.TextureLoader().load('moon.jpg')
+// const normalTexture = new THREE.TextureLoader().load('normal.jpg')
 
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(4, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalMap: normalTexture
-  })
-)
+// const moon = new THREE.Mesh(
+//   new THREE.SphereGeometry(4, 32, 32),
+//   new THREE.MeshStandardMaterial({
+//     map: moonTexture,
+//     normalMap: normalTexture
+//   })
+// )
 
-scene.add(moon)
+// scene.add(moon)
 
-moon.position.z = 10;
-moon.position.setX(-10);
+// moon.position.z = 10;
+// moon.position.setX(-10);
 
 
 function moveCamera() {
 
   const t = document.body.getBoundingClientRect().top;
 
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.05;
-  moon.rotation.z += 0.05;
+  // moon.rotation.x += 0.05;
+  // moon.rotation.y += 0.05;
+  // moon.rotation.z += 0.05;
 
   stairs.rotation.y += 0.01;
   stairs.rotation.z += 0.01;
@@ -103,9 +105,9 @@ moveCamera();
 function animate() {
   requestAnimationFrame(animate)
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.01;
-  torus.rotation.z += 0.01;
+  // torus.rotation.x += 0.01;
+  // torus.rotation.y += 0.01;
+  // torus.rotation.z += 0.01;
 
   // controls.update()
 
