@@ -129,8 +129,10 @@ function moveCamera() {
   stone2.rotation.z += 0.01;
 
   camera.position.z = t * -0.009;
-  camera.position.x = t * -0.0002;
-  camera.rotation.y = t * -0.00002;
+  // camera.position.x = t * -0.0002;
+  // camera.rotation.y = t * -0.00002;
+  camera.position.x = t * 0;
+  camera.rotation.y = t * 0;
 
 }
 
