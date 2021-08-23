@@ -20,13 +20,13 @@ renderer.render(scene, camera);
 // const geometry = new THREE.TorusGeometry(20, 2, 20, 70)
 // const material = new THREE.MeshStandardMaterial({ color: 0x00c100 })
 // const torus = new THREE.Mesh(geometry, material)
-
 // scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff)
 pointLight.position.set(5, 5, 5)
 
 const ambientLight = new THREE.AmbientLight(0xffffff)
+
 scene.add(pointLight, ambientLight)
 
 
@@ -61,8 +61,37 @@ const stairs = new THREE.Mesh(
 
 scene.add(stairs)
 
-stairs.position.z = 4;
+stairs.position.z = 15;
 stairs.position.setX(10);
+
+
+const stoneTexture = new THREE.TextureLoader().load('stone.jpg')
+
+const stone = new THREE.Mesh(
+  new THREE.BoxGeometry(6, 6, 11),
+  new THREE.MeshBasicMaterial({ map: stoneTexture })
+)
+
+scene.add(stone)
+
+stone.position.z = 1;
+stone.position.setY(5)
+stone.position.setX(-10);
+
+
+const stone2Texture = new THREE.TextureLoader().load('stone.jpg')
+
+const stone2 = new THREE.Mesh(
+  new THREE.BoxGeometry(6, 6, 11),
+  new THREE.MeshBasicMaterial({ map: stone2Texture })
+)
+
+scene.add(stone2)
+
+stone2.position.z = 30;
+stone2.position.setY(5)
+stone2.position.setX(-10);
+
 
 
 // const moonTexture = new THREE.TextureLoader().load('moon.jpg')
@@ -92,6 +121,12 @@ function moveCamera() {
 
   stairs.rotation.y += 0.01;
   stairs.rotation.z += 0.01;
+
+  stone.rotation.y += 0.01;
+  stone.rotation.z += 0.01;
+
+  stone2.rotation.y += 0.01;
+  stone2.rotation.z += 0.01;
 
   camera.position.z = t * -0.009;
   camera.position.x = t * -0.0002;

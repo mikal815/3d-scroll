@@ -12,7 +12,7 @@ canvas {
 
 
 :root {
-  --dark-bg: rgba(15, 15, 15, 0.95);
+  --dark-bg: rgba(15, 15, 15, 0.9);
   --spacing: 350px;
 
   font-family: brandon-grotesque, sans-serif;
@@ -56,13 +56,17 @@ canvas {
     margin-bottom: var(--spacing);
   }
 
+  header p {
+    font-size: 1.5rem;
+  }
+
   .name {
     font-size: 1.5rem;
   }
 
   section {
     grid-column: 2 / 8;
-    padding: 1rem;
+    padding: 2rem;
     background: var(--dark-bg);
     font-size: 1.25rem;
     line-height: 1.5;
@@ -106,4 +110,14 @@ canvas {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+  }
+
+  footer {
+    display: flex;
+    background: var(--dark-bg);
+    grid-column: 2 / span 10;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-bottom: var(--spacing);
+    justify-content: space-around;
   }
